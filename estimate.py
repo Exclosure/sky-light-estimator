@@ -1,4 +1,4 @@
-import os
+import numpy as np
 import rioxarray as rxr
 import earthpy as et
 
@@ -21,6 +21,12 @@ def interp_lat_lon(lat: float, lon: float) -> tuple:
     return light_data[0,  lat_idx, lon_idx].to_numpy()
 
 
+def uglymax(thing):
+    max_v = 0
+    for a in thing:
+        pass
+
+
 print(light_data.rio.bounds())
 
 locations = {
@@ -31,8 +37,14 @@ locations = {
 }
 
 if __name__ == "__main__":
+    # print(light_data.max())
     for name, loc in locations.items():
         print(name, interp_lat_lon(loc[0], loc[1]))
+
+    # Brightest spot
+    a = light_data.as_numpy()
+    indices = np.unravel_index(a.argmax(), a.shape)
+    print(light_data[indices])
 
     lat = float(input("Latitude:"))
     lon = float(input("Longitude:"))

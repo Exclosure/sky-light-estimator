@@ -1,0 +1,2 @@
+rioxarray==0.9.0
+earthpy==0.9.4
