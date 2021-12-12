@@ -13,6 +13,8 @@ def linear_interp(x: float, x0: float, x1: float, y0: float, y1: float) -> float
 
 def interp_lat_lon(lat: float, lon: float) -> tuple:
     c, lat_size, lon_size = light_data.shape
+    # NOTE(meawoppl) - there is almost certainly a builtin verion of this
+    # that said light_data.interp does not function as expected...
     lat_idx = int(linear_interp(lat, 75, -65, 0, lat_size))
     lon_idx = int(linear_interp(lon, -180, 180, 0, lon_size))
 
